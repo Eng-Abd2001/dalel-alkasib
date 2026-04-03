@@ -36,8 +36,11 @@ a:hover {
     color: var(--white);
 }
 
+/* =========================================
+   الهيدر (القائمة العلوية)
+========================================= */
 header {
-    background-color: rgba(6, 12, 45, 0.9);
+    background-color: rgba(6, 12, 45, 0.95);
     position: fixed;
     top: 0;
     width: 100%;
@@ -108,6 +111,9 @@ main {
     padding-top: 80px; 
 }
 
+/* =========================================
+   الرئيسية - قسم البطل والبطاقات
+========================================= */
 .hero {
     text-align: center;
     padding: 8rem 2rem;
@@ -239,103 +245,170 @@ main {
 }
 
 /* =========================================
-   تنسيق صفحات المقالات (إلغاء شكل الجريدة)
+   تصميم المقالات التوضيحية (الجديد كلياً)
 ========================================= */
 article {
-    background: #0a1128; /* لون خلفية أغمق وأهدأ للعين */
-    padding: 3.5rem;
-    border-radius: 16px;
-    border: 1px solid rgba(37, 99, 235, 0.2);
-    max-width: 900px;
+    background: #080f28; /* لون أنيق جداً وخاص للمقالات */
+    padding: 4rem;
+    border-radius: 20px;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+    max-width: 950px;
     margin: 4rem auto;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
+/* عنوان المقال الرئيسي */
 article h1 {
-    font-size: 2.4rem;
-    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
     color: var(--white);
     text-align: center;
-    text-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
     line-height: 1.4;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+/* الفقرة الأولى (المقدمة) - تحويلها إلى مربع تعريفي جذاب */
+article > p:first-of-type {
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.15) 0%, rgba(37, 99, 235, 0.02) 100%);
+    padding: 2rem;
+    border-right: 5px solid var(--light-blue);
+    border-radius: 12px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* العناوين الفرعية - تحويلها إلى أشرطة فاصلة للمحتوى */
 article h2 {
+    background: rgba(26, 42, 108, 0.4);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border-right: 4px solid var(--light-blue);
     font-size: 1.6rem;
-    margin: 3rem 0 1.5rem;
-    color: var(--light-blue);
-    position: relative;
-    padding-right: 15px; /* مسافة للخط الجانبي */
-}
-
-/* خط جانبي عصري للعناوين بدل الخط السفلي القديم */
-article h2::before {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 15%;
-    height: 70%;
-    width: 4px;
-    background-color: var(--light-blue);
-    border-radius: 4px;
+    margin: 3.5rem 0 1.5rem;
+    color: var(--white);
+    display: flex;
+    align-items: center;
 }
 
 article h3 {
     font-size: 1.3rem;
     margin: 2rem 0 1rem;
-    color: #93c5fd; /* أزرق فاتح جداً */
+    color: #93c5fd; 
+    font-weight: 700;
 }
 
+/* النصوص العادية - تباعد مريح للعين */
 article p {
     margin-bottom: 1.5rem;
     font-size: 1.15rem;
-    color: var(--text-color);
-    line-height: 2; /* تباعد مريح للأسطر */
+    color: var(--text-light);
+    line-height: 2.2;
 }
 
-/* تحويل القوائم لشكل احترافي بدل النقاط العادية */
-article ul {
-    list-style: none; /* إخفاء النقاط التقليدية */
-    padding-right: 0;
-    margin-bottom: 2rem;
+/* تحويل القوائم إلى بطاقات خطوات توضيحية (Cards) */
+article ul, article ol {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-article ul li {
-    position: relative;
-    padding-right: 35px;
-    margin-bottom: 1rem;
+article ul li, article ol li {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.2rem 3rem 1.2rem 1.5rem;
+    border-radius: 10px;
     font-size: 1.1rem;
     color: var(--text-color);
     line-height: 1.8;
+    position: relative;
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-/* إضافة أيقونة (صح) عصرية بجانب كل عنصر في القائمة */
+/* تأثير عند مرور الماوس على النقطة */
+article ul li:hover, article ol li:hover {
+    transform: translateX(-10px); /* يتحرك لليسار قليلاً */
+    background: rgba(37, 99, 235, 0.08);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* أيقونة الصح داخل البطاقة */
 article ul li::before {
     content: '\f058'; 
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     position: absolute;
-    right: 0;
-    top: 4px;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--light-blue);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
+/* مربع الروابط الداخلية (مقالات ذات صلة) */
 .internal-links {
-    background: linear-gradient(90deg, rgba(37, 99, 235, 0.1) 0%, transparent 100%);
-    padding: 2rem;
-    border-radius: 12px;
-    margin: 3rem 0;
-    border-right: 4px solid var(--light-blue);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(26, 42, 108, 0.4) 100%);
+    padding: 2.5rem;
+    border-radius: 16px;
+    margin: 4rem 0 2rem;
+    border: 1px dashed rgba(37, 99, 235, 0.3);
+    text-align: center;
 }
 
 .internal-links h3 {
     color: var(--white);
     margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
 }
 
+.internal-links ul {
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.internal-links li {
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.internal-links li::before {
+    display: none; /* إخفاء الصح هنا */
+}
+
+.internal-links li:hover {
+    transform: translateY(-3px);
+    background: transparent;
+}
+
+.internal-links a {
+    color: var(--light-blue);
+    font-weight: 700;
+    font-size: 1.15rem;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.3s;
+}
+
+.internal-links a:hover {
+    color: var(--white);
+    text-decoration-color: var(--white);
+}
+
+/* =========================================
+   الفوتر (الأسفل)
+========================================= */
 footer {
-    background-color: #04081f;
+    background-color: #030614;
     text-align: center;
     padding: 2rem;
     margin-top: 4rem;
@@ -344,7 +417,7 @@ footer {
 }
 
 /* =========================================
-   تنسيق الهاتف المحمول (إصلاح العمودين والنصوص)
+   تنسيق الهواتف الذكية والأجهزة اللوحية
 ========================================= */
 @media (max-width: 1024px) {
     .cards-grid {
@@ -377,11 +450,8 @@ footer {
     .hero h1 {
         font-size: 2.2rem;
     }
-    .grid-container h2 {
-        font-size: 1.5rem;
-    }
     .cards-grid {
-        grid-template-columns: repeat(2, 1fr); /* عمودين على التابلت والهواتف الكبيرة */
+        grid-template-columns: repeat(2, 1fr); 
         gap: 1rem;
     }
     article {
@@ -393,7 +463,7 @@ footer {
     }
 }
 
-/* شاشات الهواتف العادية والصغيرة */
+/* الهواتف الصغيرة */
 @media (max-width: 480px) {
     .logo {
         font-size: 1.2rem;
@@ -405,31 +475,51 @@ footer {
         font-size: 1rem;
     }
     .cards-grid {
-        grid-template-columns: repeat(2, 1fr); /* إجبار الهاتف على عرض عمودين */
+        grid-template-columns: repeat(2, 1fr); 
         gap: 0.8rem;
     }
     .card {
-        padding: 1rem 0.5rem; /* تصغير الهوامش عشان الكلام ما ينضغط */
+        padding: 1rem 0.5rem; 
     }
     .card-icon {
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
     }
     .card h3 {
-        font-size: 0.9rem; /* تصغير العنوان لتجنب الكتابة بالطول */
+        font-size: 0.9rem; 
         margin-bottom: 0.5rem;
     }
     .card p {
-        font-size: 0.75rem; /* تصغير الوصف */
+        font-size: 0.75rem; 
         margin-bottom: 0.5rem;
     }
     .card .btn-details {
         font-size: 0.8rem;
     }
+    
+    /* تنسيق المقالات للهاتف */
     article {
         padding: 1.5rem 1rem;
     }
-    article p, article ul li {
-        font-size: 1rem; /* خط أصغر ومريح على الموبايل */
+    article h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    article > p:first-of-type {
+        font-size: 1rem;
+        padding: 1.2rem;
+    }
+    article h2 {
+        font-size: 1.3rem;
+        padding: 0.8rem 1rem;
+    }
+    article p, article ul li, article ol li {
+        font-size: 1rem; 
+    }
+    article ul li {
+        padding: 1rem 2.2rem 1rem 1rem; /* تقليل الحواف الجانبية بالهاتف */
+    }
+    article ul li::before {
+        right: 10px;
     }
 }
